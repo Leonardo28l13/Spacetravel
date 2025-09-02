@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
     <style>
-        /* === RESET BÁSICO E CONFIGURAÇÕES GERAIS === */
+        /* === RESET BÁSICO === */
         * {
             margin: 0;
             padding: 0;
@@ -18,23 +18,228 @@
         }
 
         body {
-            background-color: #0a0f1f; /* Azul bem escuro do espaço */
-            color: #e0e0e0; /* Branco-gelo para texto */
-            font-family: 'Share Tech Mono', monospace; /* Única fonte para todo o site */
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%231a2340" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            background-color: #0a0f1f;
+            color: #e0e0e0;
+            font-family: 'Share Tech Mono', monospace;
             text-align: center;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* === FONTES E TÍTULOS === */
         h1, h2 {
-            color: #ff8c00; /* Laranja Queimado como cor principal */
-            text-shadow: 1px 1px 15px rgba(255, 140, 0, 0.5); /* Sombra para brilho */
+            color: #ff8c00;
+            text-shadow: 1px 1px 15px rgba(255, 140, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+            padding-bottom: 10px;
+        }
+
+        p, li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 30px 0;
+            background-color: #ff8c00;
+            color: #0a0f1f;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 3px solid #ff8c00;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            background-color: #ffd700;
+            color: #0a0f1f;
+            border-color: #ffd700;
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+
+        /* === ANIMAÇÕES === */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px #ff8c00; }
+            50% { box-shadow: 0 0 30px #ff8c00; }
+            100% { box-shadow: 0 0 15px #ff8c00; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px) scale(1.05); text-shadow: 1px 1px 25px rgba(255, 140, 0, 0.7); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes markerGlow {
+            0% { text-shadow: 0 0 5px #ffd700; }
+            50% { text-shadow: 0 0 15px #ffd700; }
+            100% { text-shadow: 0 0 5px #ffd700; }
+        }
+
+        /* === SEÇÕES === */
+        .section-box {
+            background-color: rgba(20, 30, 60, 0.7);
+            border: 2px solid #ff8c00;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .regras-lista {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .regras-lista li {
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 140, 0, 0.3);
+        }
+
+        .regras-lista li:before {
+            content: '>>';
+            color: #ffd700;
+            margin-right: 15px;
+            font-weight: bold;
+            animation: markerGlow 1.5s infinite;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* === FUNDO COM CREWMATES RODANDO === */
+        .background-crew {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .crew {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: fadeInCrew 1.5s ease forwards, orbit 20s linear infinite;
+            transform-origin: center center;
+        }
+
+        @keyframes fadeInCrew {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes orbit {
+            0%   { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+        }
+
+        /* === RESPONSIVO === */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            .btn { padding: 15px 25px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TRIPULANTES RODANDO -->
+    <div class="background-crew">
+        <div class="crew" style="top:40%; left:50%; background-image:url('https://static.wikia.nocookie.net/fictionalcrossover/images/0/0a/Among_Us_Crewmate.webp'); animation-delay:0s; animation-duration:25s;"></div>
+        <div class="crew" style="top:40%; left:50%; background-image:url('https://www.pngmart.com/files/21/Among-Us-Character-PNG-HD.png'); animation-delay:5s; animation-duration:30s;"></div>
+        <div class="crew" style="top:40%; left:50%; background-image:url('https://www.imagenspng.com.br/wp-content/uploads/2020/10/among-us-yellow-png-01-463x600.png'); animation-delay:10s; animation-duration:35s;"></div>
+        <div class="crew" style="top:40%; left:50%; background-image:url('https://static.wikia.nocookie.net/among-us/images/0/03/Black_%281%29.png/revision/latest?cb=20210831161010&path-prefix=pt-br'); animation-delay:15s; animation-duration:40s;"></div>
+    </div>
+
+    <div class="container">
+
+        <header>
+            <h1>Space Travel</h1>
+            <p>Sua Central de Recrutamento para Among Us</p>
+            <a href="https://chat.whatsapp.com/JO0goD3ow3DDNUyNK7M2On?mode=ems_copy_c" class="btn" target="_blank" rel="noopener noreferrer">
+                🚀 Entrar na Nave
+            </a>
+        </header>
+
+        <main>
+            <section class="section-box">
+                <h2>Sobre a Tripulação</h2>
+                <p>
+                    A Space Travel é uma comunidade de jogadores de Among Us focada na diversão e na estratégia. Não importa se você é um detetive mestre ou se está aprendendo a sabotar o reator, aqui você encontrará um grupo ativo para jogar, dar risada e fazer novas amizades.
+                </p>
+            </section>
+
+            <section class="section-box">
+                <h2>Código de Conduta da Nave</h2>
+                <ul class="regras-lista">
+                    <li>Respeito acima de tudo: Proibido qualquer tipo de ofensa ou assédio.</li>
+                    <li>Sem Spam ou Flood: Mantenha o foco em Among Us e assuntos do grupo.</li>
+                    <li>Jogo Limpo: Não revele o impostor após ser eliminado (sem "ghosting").</li>
+                    <li>Conteúdo Adulto: Proibido compartilhamento de conteúdo sensível.</li>
+                    <li>Seja Ativo: Tripulantes fantasmas podem ser ejetados!</li>
+                    <li>Proibido Self Report: Matar o Tripulante e Reportar.</li>
+                    <li>Proibido Mentir Profissão: Ex: Falar que é Engenheiro e ser Cientista.</li>
+                </ul>
+            </section>
+
+            <footer>
+                <p>A partida vai começar. Só falta você!</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Easter Egg no console
+        console.log("======================================");
+        console.log("SISTEMA DA NAVE SPACE TRAVEL: ONLINE");
+        console.log("Status: Procurando novos tripulantes...");
+        console.log("Protocolo de cores: LARANJA/DOURADO ativado.");
+        console.log("Link do grupo de comunicação carregado.");
+        console.log("======================================");
+    </script>
+
+</body>
+</html>            text-shadow: 1px 1px 15px rgba(255, 140, 0, 0.5); /* Sombra para brilho */
             margin-bottom: 20px;
         }
 
