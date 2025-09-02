@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Travel - Grupo de Among Us</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        /* === RESET BÁSICO E CONFIGURAÇÕES GERAIS === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0f1f; /* Azul bem escuro do espaço */
+            color: #e0e0e0; /* Branco-gelo para texto */
+            font-family: 'Share Tech Mono', monospace; /* Única fonte para todo o site */
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%231a2340" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* === FONTES E TÍTULOS === */
+        h1, h2 {
+            color: #ff8c00; /* Laranja Queimado como cor principal */
+            text-shadow: 1px 1px 15px rgba(255, 140, 0, 0.5); /* Sombra para brilho */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+            padding-bottom: 10px;
+        }
+
+        p, li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* === BOTÃO DE AÇÃO (CALL TO ACTION) === */
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 30px 0;
+            background-color: #ff8c00; /* Laranja Queimado */
+            color: #0a0f1f; /* Texto escuro para contraste */
+            font-family: 'Share Tech Mono', monospace;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 3px solid #ff8c00;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite; /* Animação de pulsar */
+        }
+
+        .btn:hover {
+            background-color: #ffd700; /* Amarelo Dourado no hover */
+            color: #0a0f1f;
+            border-color: #ffd700;
+            transform: scale(1.05);
+            animation-play-state: paused; /* Pausa a animação no hover */
+        }
+
+        /* Animação do botão */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 15px #ff8c00;
+            }
+            50% {
+                box-shadow: 0 0 30px #ff8c00;
+            }
+            100% {
+                box-shadow: 0 0 15px #ff8c00;
+            }
+        }
+
+        /* === SEÇÕES DE CONTEÚDO === */
+        .section-box {
+            background-color: rgba(20, 30, 60, 0.7); /* Painel translúcido */
+            border: 2px solid #ff8c00;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        /* === LISTA DE REGRAS === */
+        .regras-lista {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .regras-lista li {
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 140, 0, 0.3);
+        }
+
+        .regras-lista li:before {
+            content: '>>'; /* Marcador personalizado */
+            color: #ffd700; /* Cor do marcador */
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        /* === RODAPÉ === */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* === AJUSTES PARA CELULAR (RESPONSIVIDADE) === */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .btn {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Space Travel</h1>
+            <p>Sua Central de Recrutamento para Among Us</p>
+            <a href="https://chat.whatsapp.com/JO0goD3ow3DDNUYNK7M20n" class="btn" target="_blank" rel="noopener noreferrer">
+                🚀 Entrar na Nave
+            </a>
+        </header>
+
+        <main>
+            <section class="section-box">
+                <h2>Sobre a Tripulação</h2>
+                <p>
+                    A Space Travel é uma comunidade de jogadores de Among Us focada na diversão e na estratégia. Não importa se você é um detetive mestre ou se está aprendendo a sabotar o reator, aqui você encontrará um grupo ativo para jogar, dar risada e fazer novas amizades.
+                </p>
+            </section>
+
+            <section class="section-box">
+                <h2>Código de Conduta da Nave</h2>
+                <ul class="regras-lista">
+                    <li>Respeito acima de tudo: Proibido qualquer tipo de ofensa ou assédio.</li>
+                    <li>Sem Spam ou Flood: Mantenha o foco em Among Us e assuntos do grupo.</li>
+                    <li>Jogo Limpo: Não revele o impostor após ser eliminado (sem "ghosting").</li>
+                    <li>Conteúdo Adulto: Proibido compartilhamento de conteúdo sensível.</li>
+                    <li>Seja Ativo: Tripulantes fantasmas podem ser ejetados!</li>
+                </ul>
+            </section>
+
+            <footer>
+                <p>A partida vai começar. Só falta você!</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script>
+        // Pequeno easter-egg para quem abrir o console do navegador (F12)
+        console.log("======================================");
+        console.log("SISTEMA DA NAVE SPACE TRAVEL: ONLINE");
+        console.log("Status: Procurando novos tripulantes...");
+        console.log("Protocolo de cores: LARANJA/DOURADO ativado.");
+        console.log("Link do grupo de comunicação carregado.");
+        console.log("======================================");
+
+    </script>
+
+</body>
+</html>
