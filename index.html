@@ -41,6 +41,8 @@
         h1 {
             font-size: 2.5rem;
             font-weight: bold;
+            /* NOVA ANIMAÇÃO: Título flutuante */
+            animation: float 4s ease-in-out infinite;
         }
 
         h2 {
@@ -80,17 +82,39 @@
             animation-play-state: paused; /* Pausa a animação no hover */
         }
 
-        /* Animação do botão */
+        /* === KEYFRAMES (ANIMAÇÕES) === */
+
+        /* Animação do botão (já existente) */
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 15px #ff8c00;
+            0% { box-shadow: 0 0 15px #ff8c00; }
+            50% { box-shadow: 0 0 30px #ff8c00; }
+            100% { box-shadow: 0 0 15px #ff8c00; }
+        }
+
+        /* NOVA ANIMAÇÃO: Título Flutuante */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); text-shadow: 1px 1px 25px rgba(255, 140, 0, 0.7); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* NOVA ANIMAÇÃO: Surgimento suave das seções */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            50% {
-                box-shadow: 0 0 30px #ff8c00;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            100% {
-                box-shadow: 0 0 15px #ff8c00;
-            }
+        }
+
+        /* NOVA ANIMAÇÃO: Brilho do marcador da lista */
+        @keyframes markerGlow {
+            0% { text-shadow: 0 0 5px #ffd700; }
+            50% { text-shadow: 0 0 15px #ffd700; }
+            100% { text-shadow: 0 0 5px #ffd700; }
         }
 
         /* === SEÇÕES DE CONTEÚDO === */
@@ -101,6 +125,8 @@
             border-radius: 10px;
             margin-top: 30px;
             text-align: left;
+            /* NOVA ANIMAÇÃO: Aplicando o efeito de surgimento */
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
         /* === LISTA DE REGRAS === */
@@ -119,6 +145,8 @@
             color: #ffd700; /* Cor do marcador */
             margin-right: 15px;
             font-weight: bold;
+            /* NOVA ANIMAÇÃO: Aplicando brilho ao marcador */
+            animation: markerGlow 1.5s infinite;
         }
 
         /* === RODAPÉ === */
@@ -172,6 +200,8 @@
                     <li>Jogo Limpo: Não revele o impostor após ser eliminado (sem "ghosting").</li>
                     <li>Conteúdo Adulto: Proibido compartilhamento de conteúdo sensível.</li>
                     <li>Seja Ativo: Tripulantes fantasmas podem ser ejetados!</li>
+                    <li>Proibido Self Report: Matar o Tripulante e Reportar</li>
+                    <li>Proibido Mentir Profissão: Ex: Falar Que é Engenheiro e Ser Cientista</li>
                 </ul>
             </section>
 
